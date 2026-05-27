@@ -1,3 +1,5 @@
+// element loading
+
 const countDisplay = document.getElementById("count-display");
 const decrementBtn = document.getElementById("decrement-btn");
 const incrementBtn = document.getElementById("increment-btn");
@@ -7,18 +9,26 @@ const totalDisplay = document.getElementById("total-display");
 const averageDisplay = document.getElementById("average-display");
 const resetBtn = document.getElementById("reset-btn");
 
+// variable initializing
+
 let count = 0;
 let savedItems = [];
+
+// decrement function
 
 function decrement() {
   count--;
   countDisplay.textContent = count;
 }
 
+// increment function
+
 function increment() {
   count++;
   countDisplay.textContent = count;
 }
+
+// tally sub-function
 
 function tally() {
   if (savedItems.length === 0) {
@@ -37,6 +47,8 @@ function tally() {
   }
 }
 
+// save function
+
 function save() {
   if (count === 0) {
     return;
@@ -49,6 +61,8 @@ function save() {
   updateAverage();
   updateTotal();
 }
+
+// updateTotal function
 
 function updateTotal() {
   if (savedItems.length === 0) {
@@ -64,6 +78,8 @@ function updateTotal() {
 
   totalDisplay.textContent = sumTotal;
 }
+
+// updateAverage function
 
 function updateAverage() {
   if (savedItems.length === 0) {
@@ -83,6 +99,8 @@ function updateAverage() {
   sumAverage.toFixed(2);
 }
 
+// reset function
+
 function reset() {
   savedItems = [];
   count = 0;
@@ -91,6 +109,8 @@ function reset() {
   updateTotal();
   updateAverage();
 }
+
+// event listeners
 
 decrementBtn.addEventListener("click", decrement);
 incrementBtn.addEventListener("click", increment);

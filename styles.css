@@ -1,3 +1,5 @@
+/* setup */
+
 *,
 *::before,
 *::after {
@@ -28,6 +30,8 @@
   --close-button-hover: red;
 }
 
+/* app */
+
 body {
   font-family: "Doppio One", sans-serif;
   color: var(--page-ink);
@@ -50,6 +54,8 @@ main {
   overflow: hidden;
 }
 
+/* app header */
+
 .app__header {
   display: flex;
   justify-content: center;
@@ -68,6 +74,8 @@ main {
   cursor: default;
   user-select: none;
 }
+
+/* app count-section */
 
 .count {
   display: flex;
@@ -91,6 +99,8 @@ main {
   cursor: text;
   user-select: text;
 }
+
+/* app counter-section */
 
 .counter {
   display: flex;
@@ -175,6 +185,8 @@ main {
   background-color: var(--button-body-pressed);
 }
 
+/* app tally-section */
+
 .tally {
   display: flex;
   justify-content: center;
@@ -214,6 +226,54 @@ main {
   cursor: default;
   user-select: none;
 }
+
+.tally__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 0;
+  border: 1px solid var(--soft-boundary);
+  animation: slideIn 0.15s ease-in;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.tally__item-index {
+  font-size: 0.9rem;
+  margin-left: 2rem;
+}
+
+.tally__item-value {
+  font-size: 1rem;
+}
+
+.tally__item-close {
+  font-size: 1.1rem;
+  margin-right: 2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.tally__item-close:hover {
+  color: var(--close-button-hover);
+}
+
+.tally__item-close:active {
+  color: var(--close-button-active);
+}
+
+/* app summary-section */
 
 .summary {
   display: flex;
@@ -277,50 +337,4 @@ main {
 
 .summary__reset-btn:active {
   background-color: var(--button-body-pressed);
-}
-
-.tally__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.2rem 0;
-  border: 1px solid var(--soft-boundary);
-  animation: slideIn 0.15s ease-in;
-}
-
-@keyframes slideIn {
-  0% {
-    transform: translateY(-8px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.tally__item-index {
-  font-size: 0.9rem;
-  margin-left: 2rem;
-}
-
-.tally__item-value {
-  font-size: 1rem;
-}
-
-.tally__item-close {
-  font-size: 1.1rem;
-  margin-right: 2rem;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  user-select: none;
-  transition: color 0.15s ease;
-}
-
-.tally__item-close:hover {
-  color: var(--close-button-hover);
-}
-
-.tally__item-close:active {
-  color: var(--close-button-active);
 }
