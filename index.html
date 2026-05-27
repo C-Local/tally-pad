@@ -1,0 +1,75 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tally Pad</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="app">
+        <div class="app__header">
+          <h1 class="app__title">Tally Pad</h1>
+        </div>
+        <div class="count">
+          <h2 class="count__title">Current Count</h2>
+          <p
+            class="count__display"
+            id="count-display"
+            aria-label="count display"
+          >
+            0
+          </p>
+        </div>
+        <div class="counter">
+          <div class="counter__controls">
+            <button
+              class="counter__btn counter__btn--decrement"
+              id="decrement-btn"
+              aria-label="decrement"
+            >
+              <div class="counter__btn--decrement-symbol"></div>
+            </button>
+            <button
+              class="counter__btn counter__btn--increment"
+              id="increment-btn"
+              aria-label="increment"
+            >
+              +
+            </button>
+          </div>
+          <button class="counter__save" id="save-btn">Save Count</button>
+        </div>
+        <div class="tally">
+          <h2 class="tally__heading">Saved Counts</h2>
+          <div class="tally__list" id="tally-list">
+            <p class="tally__placeholder">No counts saved yet</p>
+          </div>
+        </div>
+        <div class="summary">
+          <div class="summary__stat">
+            <h2 class="summary__label">Total</h2>
+            <p class="summary__value" id="total-display">0</p>
+          </div>
+          <div class="summary__stat">
+            <h2 class="summary__label">Average</h2>
+            <p class="summary__value" id="average-display">0</p>
+          </div>
+          <div class="summary__reset-section">
+            <button class="summary__reset-btn" id="reset-btn">Reset All</button>
+          </div>
+        </div>
+        <!-- end app -->
+      </div>
+    </main>
+  </body>
+</html>

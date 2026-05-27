@@ -1,0 +1,326 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --app-backdrop: #d9eafc;
+  --app-header: #6371ae;
+  --app-title: #ffffff;
+  --cream-paper: #f8f8e5;
+  --soft-boundary: #dfdfdf;
+  --page-ink: #5c5c5c;
+  --calculator-body: #63666a;
+  --calculator-outline: #535353;
+  --button-border: #555555;
+  --button-label-regular: #ffffff;
+  --button-body-pressed: #5a5a5c;
+  --increment-button-body-regular: #9d9da3;
+  --increment-button-body-hover: rgb(180, 180, 185);
+  --decrement-button-body-regular: #929297;
+  --decrement-button-body-hover: #828286;
+  --action-button-body-regular: #a4a4a4;
+  --action-button-body-hover: #8d8d8d;
+  --close-button-active: rgb(214, 25, 25);
+  --close-button-hover: red;
+}
+
+body {
+  font-family: "Doppio One", sans-serif;
+  color: var(--page-ink);
+  background-color: var(--app-backdrop);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+}
+
+.app {
+  max-width: 26rem;
+  width: 100%;
+  margin: 0.4rem;
+  background-color: var(--cream-paper);
+  border-radius: 1rem;
+  border: 1px solid var(--soft-boundary);
+  overflow: hidden;
+}
+
+.app__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
+  width: 100%;
+  color: var(--app-title);
+  background-color: var(--app-header);
+  border: 1px solid var(--soft-boundary);
+}
+
+.app__title {
+  font-size: 1.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: default;
+  user-select: none;
+}
+
+.count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0.8rem 0 0 0;
+  border: 1px solid var(--soft-boundary);
+}
+
+.count__title {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  cursor: default;
+  user-select: none;
+}
+
+.count__display {
+  font-size: 5rem;
+  cursor: text;
+  user-select: text;
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--calculator-body);
+  border: 1px solid var(--calculator-outline);
+}
+
+.counter__controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.counter__btn {
+  width: 5.2rem;
+  height: 4rem;
+  border-radius: 1.3rem;
+  border: 1px solid var(--button-border);
+  font-size: 3rem;
+  color: var(--button-label-regular);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.counter__btn--decrement-symbol {
+  width: 1.3rem;
+  height: 0.3rem;
+  background-color: var(--button-label-regular);
+}
+
+.counter__btn--decrement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--decrement-button-body-regular);
+}
+
+.counter__btn--decrement:hover {
+  background-color: var(--decrement-button-body-hover);
+}
+
+.counter__btn--decrement:active {
+  background-color: var(--button-body-pressed);
+}
+
+.counter__btn--increment {
+  background-color: var(--increment-button-body-regular);
+}
+
+.counter__btn--increment:hover {
+  background-color: var(--increment-button-body-hover);
+}
+
+.counter__btn--increment:active {
+  background-color: var(--button-body-pressed);
+}
+
+.counter__save {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 1rem 1.8rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--button-border);
+  color: var(--button-label-regular);
+  background-color: var(--action-button-body-regular);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.counter__save:hover {
+  background-color: var(--action-button-body-hover);
+}
+
+.counter__save:active {
+  background-color: var(--button-body-pressed);
+}
+
+.tally {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1.1rem 0 0 0;
+  border: 1px solid var(--soft-boundary);
+  gap: 1.1rem;
+}
+
+.tally__heading {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  cursor: default;
+  user-select: none;
+}
+
+.tally__list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 1px solid var(--soft-boundary);
+  border-right: none;
+  border-left: none;
+}
+
+.tally__placeholder {
+  font-size: 0.7rem;
+  font-family: "Open Sans", sans-serif;
+  border: 1px solid var(--soft-boundary);
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: default;
+  user-select: none;
+}
+
+.summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  border: 1px solid var(--soft-boundary);
+  border-top: none;
+}
+
+.summary__stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 2rem;
+}
+
+.summary__label {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  cursor: default;
+  user-select: none;
+}
+
+.summary__value {
+  font-size: 2.3rem;
+  cursor: text;
+  user-select: text;
+}
+
+.summary__reset-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--calculator-body);
+  border: 1px solid var(--calculator-outline);
+  width: 8.8rem;
+  height: 8.6rem;
+}
+
+.summary__reset-btn {
+  font-family: "Open Sans", sans-serif;
+  height: 3.6rem;
+  width: 6rem;
+  border-radius: 1rem;
+  color: var(--button-label-regular);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: 1px solid var(--button-border);
+  background-color: var(--action-button-body-regular);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.summary__reset-btn:hover {
+  background-color: var(--action-button-body-hover);
+}
+
+.summary__reset-btn:active {
+  background-color: var(--button-body-pressed);
+}
+
+.tally__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.2rem 0;
+  border: 1px solid var(--soft-boundary);
+  animation: slideIn 0.15s ease-in;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.tally__item-index {
+  font-size: 0.9rem;
+  margin-left: 2rem;
+}
+
+.tally__item-value {
+  font-size: 1rem;
+}
+
+.tally__item-close {
+  font-size: 1.1rem;
+  margin-right: 2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s ease;
+}
+
+.tally__item-close:hover {
+  color: var(--close-button-hover);
+}
+
+.tally__item-close:active {
+  color: var(--close-button-active);
+}
