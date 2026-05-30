@@ -214,7 +214,7 @@ main {
   border-left: none;
 }
 
-.tally__placeholder {
+#tally__placeholder {
   font-size: 0.7rem;
   font-family: "Open Sans", sans-serif;
   border: 1px solid var(--soft-boundary);

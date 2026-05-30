@@ -1,5 +1,3 @@
-// element loading
-
 const countDisplay = document.getElementById("count-display");
 const decrementBtn = document.getElementById("decrement-btn");
 const incrementBtn = document.getElementById("increment-btn");
@@ -9,45 +7,62 @@ const totalDisplay = document.getElementById("total-display");
 const averageDisplay = document.getElementById("average-display");
 const resetBtn = document.getElementById("reset-btn");
 
-// variable initializing
-
 let count = 0;
 let savedItems = [];
-
-// decrement function
 
 function decrement() {
   count--;
   countDisplay.textContent = count;
 }
 
-// increment function
-
 function increment() {
   count++;
   countDisplay.textContent = count;
 }
 
-// tally sub-function
+// list rendering sub-function
 
-function tally() {
+function renderList() {
   if (savedItems.length === 0) {
-    tallyList.innerHTML = `<p class="tally__placeholder">No counts saved yet</p>`;
+    const placeholder = document.createElement("p");
+    placeholder.id = "tally__placeholder";
+    placeholder.textContent = "No counts saved yet";
+    tallyList.replaceChildren(placeholder);
     return;
   }
+
+  const placeholder = document.getElementById("tally__placeholder");
+
+  if (placeholder !== null) {
+    placeholder.remove();
+  }
+
   tallyList.innerHTML = ``;
 
   for (let i = 0; i < savedItems.length; i++) {
     let indexNum = i + 1;
-    tallyList.innerHTML += `<div class="tally__item" data-index="${i}">
-        <p class="tally__item-index">#${indexNum}</p>
-        <p class="tally__item-value">${savedItems[i]}</p>
-        <button class="tally__item-close">x</button>
-      </div>`;
+
+    let item = document.createElement("div");
+    item.classList.add("tally__item");
+    item.id = `${i}`;
+    tallyList.appendChild(item);
+
+    let index = document.createElement("p");
+    index.classList.add("tally__item-index");
+    index.textContent = `#${indexNum}`;
+    item.appendChild(index);
+
+    let value = document.createElement("p");
+    value.classList.add("tally__item-value");
+    value.textContent = `${savedItems[i]}`;
+    item.appendChild(value);
+
+    let button = document.createElement("button");
+    button.classList.add("tally__item-close");
+    button.textContent = "x";
+    item.appendChild(button);
   }
 }
-
-// save function
 
 function save() {
   if (count === 0) {
@@ -57,12 +72,10 @@ function save() {
   count = 0;
   countDisplay.textContent = count;
 
-  tally();
+  renderList();
   updateAverage();
   updateTotal();
 }
-
-// updateTotal function
 
 function updateTotal() {
   if (savedItems.length === 0) {
@@ -78,8 +91,6 @@ function updateTotal() {
 
   totalDisplay.textContent = sumTotal;
 }
-
-// updateAverage function
 
 function updateAverage() {
   if (savedItems.length === 0) {
@@ -99,18 +110,14 @@ function updateAverage() {
   sumAverage.toFixed(2);
 }
 
-// reset function
-
 function reset() {
   savedItems = [];
   count = 0;
   countDisplay.textContent = count;
-  tally();
+  renderList();
   updateTotal();
   updateAverage();
 }
-
-// event listeners
 
 decrementBtn.addEventListener("click", decrement);
 incrementBtn.addEventListener("click", increment);
@@ -121,11 +128,11 @@ tallyList.addEventListener("click", (event) => {
   if (!closeBtn) return;
 
   const item = closeBtn.closest(".tally__item");
-  const index = Number(item.dataset.index);
+  const index = item.id;
 
   savedItems.splice(index, 1);
 
-  tally();
+  renderList();
   updateTotal();
   updateAverage();
 });
